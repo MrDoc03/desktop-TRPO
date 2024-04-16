@@ -168,7 +168,13 @@
                 Foreground="#FF00680A" />
         </DockPanel>
         <ScrollViewer>
-            <Label Name="textbox" IsEnabled="False" />
+            <StackPanel>
+                <Image  Source="/im1.1.jpg"/>
+                <Image  Source="/im1.1.jpg"/>
+                <Image  Source="/im1.1.jpg"/>
+                <Image  Source="/im1.1.jpg"/>
+
+            </StackPanel>
         </ScrollViewer>
     </DockPanel>
 </Window>

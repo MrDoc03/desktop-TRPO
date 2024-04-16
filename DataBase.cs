@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
+using Десктоп_РПМ;
 
 public static class DbInitializer
 {
-    public static void Initialize(YourDbContext context) //разобраться с YourDbContext объект YourDbContext, который представляет контекст базы данных Entity Framework
+    public static void Initialize(UserContext context) //разобраться с YourDbContext объект YourDbContext, который представляет контекст базы данных Entity Framework
     {
         // Проверка, пуста ли база данных
         if (context.Books.Any())
