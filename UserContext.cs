@@ -16,7 +16,7 @@ namespace Десктоп_РПМ
 
         public DbSet<User> Users { get; set; }
         public DbSet<Book> Books { get; set; }
-        public DbSet<ReadingHistory> ReadingHistory { get; set; }
+        //public DbSet<ReadingHistory> ReadingHistory { get; set; }
         public DbSet<FavoriteBooks> FavoriteBooks { get; set; }
 
         private int? language;

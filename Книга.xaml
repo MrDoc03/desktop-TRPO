@@ -167,12 +167,10 @@
                 FontSize="36"
                 Foreground="#FF00680A" />
         </DockPanel>
-        <ScrollViewer>
-            <StackPanel>
-                <Image  Source="/im1.1.jpg"/>
-                <Image  Source="/im1.1.jpg"/>
-                <Image  Source="/im1.1.jpg"/>
-                <Image  Source="/im1.1.jpg"/>
+        <ScrollViewer Background="#FF444444">
+            <StackPanel Name="PageHolder">
+                
+
 
             </StackPanel>
         </ScrollViewer>

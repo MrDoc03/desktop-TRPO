@@ -47,6 +47,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,15 +67,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataBase.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UserContext.cs" />
     <Compile Include="Vk&amp;Tg.xaml.cs">
       <DependentUpon>Vk&amp;Tg.xaml</DependentUpon>
     </Compile>
     <Compile Include="Книга.xaml.cs">
       <DependentUpon>Книга.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Любимые_книги.xaml.cs">
-      <DependentUpon>Любимые_книги.xaml</DependentUpon>
     </Compile>
     <Compile Include="Профиль.xaml.cs">
       <DependentUpon>Профиль.xaml</DependentUpon>
@@ -99,10 +102,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Любимые_книги.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Профиль.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,18 +111,13 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -140,6 +134,37 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="im1.1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MangaImages\1\1.jpg" />
+    <Resource Include="MangaImages\1\2.jpg" />
+    <Resource Include="MangaImages\1\3.jpg" />
+    <Resource Include="MangaImages\1\4.jpg" />
+    <Resource Include="MangaImages\1\5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MangaImages\2\1.jpg" />
+    <Resource Include="MangaImages\2\2.jpg" />
+    <Resource Include="MangaImages\2\3.jpg" />
+    <Resource Include="MangaImages\2\4.jpg" />
+    <Resource Include="MangaImages\2\5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MangaImages\4\1.jpg" />
+    <Resource Include="MangaImages\4\2.jpg" />
+    <Resource Include="MangaImages\4\3.jpg" />
+    <Resource Include="MangaImages\4\4.jpg" />
+    <Resource Include="MangaImages\4\5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MangaImages\5\1.jpg" />
+    <Resource Include="MangaImages\5\2.jpg" />
+    <Resource Include="MangaImages\5\3.jpg" />
+    <Resource Include="MangaImages\5\4.jpg" />
+    <Resource Include="MangaImages\5\5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MangaImages\3\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

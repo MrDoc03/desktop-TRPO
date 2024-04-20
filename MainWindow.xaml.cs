@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.IO;
 namespace Десктоп_РПМ
 {
     public partial class MainWindow : Window
@@ -21,7 +21,10 @@ namespace Десктоп_РПМ
             foreach (var url in imagesql)
             {
                 Image image = new Image();
-                image.Source = new BitmapImage(new Uri(url.ImageUrl));
+                string coverImagePath = System.IO.Path.Combine("MangaImages",url.PagesFolder, "1.jpg"); // C:\Users\fidan\OneDrive\Рабочий стол\ТРПО\desktop-TRPO\MangaImages\1\1.jpg
+                
+                image.Source = new BitmapImage(new Uri(coverImagePath, UriKind.Relative));
+                
                 switch (url.BookId)
                 {
                     case 1:
@@ -92,6 +95,7 @@ namespace Десктоп_РПМ
                             Content = book.Title,
                             Tag = book.BookId,
                             Width = 900,
+                            
                             Margin = new Thickness(10, 5, 10, 5),
                             Padding = new Thickness(10),
                             Background = Brushes.Orange,
@@ -191,8 +195,8 @@ namespace Десктоп_РПМ
             
             foreach (var books in book)
             {
-                
-                Книга taskWindow = new Книга( books.BookId,books.Text, books.Title, books.Author, books.Genre, books.Year);
+
+                Книга taskWindow = new Книга(books.BookId, books.Title, books.Author, books.Genre, books.Year, books.Description, books.PagesFolder);
                 taskWindow.Show();
             }
             this.Close();          
