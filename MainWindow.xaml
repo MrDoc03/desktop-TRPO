@@ -402,11 +402,10 @@
                     FontStretch="Medium"
                     FontWeight="Bold"
                     Foreground="Black"
-                    Header="    Каталог">
+                    Header="    Каталог" Click="MenuItem_Click">
                     <MenuItem Click="ShowGenreBooks_Click" Header="Сай-фай" />
                     <MenuItem Click="ShowGenreBooks_Click" Header="Фентези" />
                     <MenuItem Click="ShowGenreBooks_Click" Header="Приключения" />
-                    <MenuItem Click="ShowGenreBooks_Click" Header="Лит РПГ" />
                     <MenuItem Click="ShowGenreBooks_Click" Header="Романтика" />
                     <MenuItem Click="ShowGenreBooks_Click" Header="Триллер" />
                     <MenuItem Click="ShowGenreBooks_Click" Header="Комедия" />

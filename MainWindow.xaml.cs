@@ -260,5 +260,10 @@ namespace Десктоп_РПМ
             taskWindow.Owner = this;
             taskWindow.Show();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

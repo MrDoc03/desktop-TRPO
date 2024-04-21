@@ -83,7 +83,7 @@ namespace Десктоп_РПМ
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Author + " " + Genre + " " + Convert.ToString(Year));
+            MessageBox.Show(Genre + " " + Description + " " + Convert.ToString(Year));
         }
         private void heart_Click(object sender, RoutedEventArgs e)
         {
