@@ -5,7 +5,6 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.IO;
 namespace Десктоп_РПМ
 {
     public partial class MainWindow : Window
@@ -13,7 +12,7 @@ namespace Десктоп_РПМ
         UserContext db = new UserContext();
         public MainWindow()
         {
-            InitializeComponent();           
+            InitializeComponent();
             db.Database.Initialize(true);
             db.SaveChanges();
             var imagesql = db.Books.SqlQuery("select * from Books");
@@ -21,22 +20,22 @@ namespace Десктоп_РПМ
             foreach (var url in imagesql)
             {
                 Image image = new Image();
-                string coverImagePath = System.IO.Path.Combine("MangaImages",url.PagesFolder, "1.jpg"); // C:\Users\fidan\OneDrive\Рабочий стол\ТРПО\desktop-TRPO\MangaImages\1\1.jpg
-                
+                string coverImagePath = System.IO.Path.Combine("MangaImages", url.PagesFolder, "1.jpg"); // C:\Users\fidan\OneDrive\Рабочий стол\ТРПО\desktop-TRPO\MangaImages\1\1.jpg
+
                 image.Source = new BitmapImage(new Uri(coverImagePath, UriKind.Relative));
-                
+
                 switch (url.BookId)
                 {
                     case 1:
-                        
+
                         image1.Source = image.Source;
                         text1.Text = url.Title + " " + url.Author;
-                        button1.Name = "id"+Convert.ToString(url.BookId);
+                        button1.Name = "id" + Convert.ToString(url.BookId);
                         break;
                     case 2:
                         image2.Source = image.Source;
                         text2.Text = url.Title + " " + url.Author;
-                        button2.Name = "id"+Convert.ToString(url.BookId);
+                        button2.Name = "id" + Convert.ToString(url.BookId);
                         break;
                     case 3:
                         image3.Source = image.Source;
@@ -95,7 +94,7 @@ namespace Десктоп_РПМ
                             Content = book.Title,
                             Tag = book.BookId,
                             Width = 900,
-                            
+
                             Margin = new Thickness(10, 5, 10, 5),
                             Padding = new Thickness(10),
                             Background = Brushes.Orange,
@@ -143,17 +142,24 @@ namespace Десктоп_РПМ
         }
         private void LoadGenreBooks(string genre)
         {
+            genre.ToLower();
+            Console.WriteLine(genre);
             try
             {
-                navigate.Text = "> "+ genre;
+                navigate.Text = "> " + genre;
                 maincontent.Visibility = Visibility.Hidden;
                 favoritecontent.Visibility = Visibility.Visible;
                 using (UserContext db = new UserContext())
                 {
-                    var genreBooks = db.Books.Where(b => b.Genre.ToLower() == genre.ToLower()).ToList();
+                    var genrebooks = db.Books
+                                .Where(b => string.IsNullOrEmpty(genre) ||
+                b.Title.ToLower().Contains(genre) ||
+                b.Author.ToLower().Contains(genre) ||
+                b.Genre.ToLower().Contains(genre))
+                                .ToList();
                     favorite.Children.Clear();
 
-                    foreach (var book in genreBooks)
+                    foreach (var book in genrebooks)
                     {
                         Button button = new Button
                         {
@@ -192,17 +198,18 @@ namespace Десктоп_РПМ
             name = name.Remove(0, 2);
             System.Data.SqlClient.SqlParameter param = new System.Data.SqlClient.SqlParameter("@name", Convert.ToInt64(name));
             var book = db.Books.SqlQuery("select * from Books where BookId=@name", param);
-            
+
             foreach (var books in book)
             {
 
                 Книга taskWindow = new Книга(books.BookId, books.Title, books.Author, books.Genre, books.Year, books.Description, books.PagesFolder);
                 taskWindow.Show();
             }
-            this.Close();          
+            this.Close();
         }
         private void LoadBooks(string searchQuery = "")
         {
+            searchQuery.ToLower();
             try
             {
                 using (UserContext db = new UserContext())
@@ -253,9 +260,9 @@ namespace Десктоп_РПМ
             maincontent.Visibility = Visibility.Hidden;
             favoritecontent.Visibility = Visibility.Visible;
             navigate.Text = "> Поиск";
-        }    
+        }
         private void ToTheSource(object sender, RoutedEventArgs e)
-        {           
+        {
             Vk_Tg taskWindow = new Vk_Tg();
             taskWindow.Owner = this;
             taskWindow.Show();
