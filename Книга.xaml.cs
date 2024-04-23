@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Security.Policy;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -37,22 +35,23 @@ namespace Десктоп_РПМ
 
             label.Content = this.Title;
             UserContext db = new UserContext();
-            var count = db.Database.SqlQuery<int>("select count(*) from FavoriteBooks where BookId = @id", new System.Data.SqlClient.SqlParameter("@id", this.Id)).SingleOrDefault();
+
             using (UserContext context = new UserContext())
             {
+                var count = context.FavoriteBooks.Where(f => f.BookId == this.Id && f.Email == Account.Email).ToList().Count();
 
-                for (int i = 1; i<100; i++)
+                for (int i = 1; i < 100; i++)
                 /*int i = 1;               
                 while (File.Exists(Path.Combine(Directory.GetCurrentDirectory(), (new Uri("MangaImages/" + PagesFolder + "/" + Convert.ToString(i) + ".jpg", UriKind.Relative)).OriginalString)))
                 */
                 {
                     try
                     {
-                        
+
                         Image myImage = new Image();
                         myImage.Source = new BitmapImage(new Uri("MangaImages/" + PagesFolder + "/" + Convert.ToString(i) + ".jpg", UriKind.Relative));
                         myImage.Width = 450;
-                        
+
                         myImage.Margin = new Thickness(1, 1, 1, 1);
                         PageHolder.Children.Add(myImage);
                         Console.WriteLine(myImage.Source.ToString());
@@ -62,17 +61,19 @@ namespace Десктоп_РПМ
 
                 }
 
+                if (count > 0)
+                {
+                    heartbutton.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF00680A"));
+                }
+                else
+                {
+                    heartbutton.Fill = Brushes.Black;
+                }
 
 
+
             }
-            if (count > 0)
-            {
-                heartbutton.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF00680A"));
-            }
-            else
-            {
-                heartbutton.Fill = Brushes.Black;
-            }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -91,7 +92,8 @@ namespace Десктоп_РПМ
             {
                 using (UserContext db = new UserContext())
                 {
-                    var existingFavorite = db.FavoriteBooks.SingleOrDefault(f => f.BookId == this.Id);
+                    var existingFavorite = db.FavoriteBooks.FirstOrDefault(f => f.BookId == this.Id && f.Email == Account.Email);
+
 
                     if (existingFavorite != null)
                     {
@@ -106,7 +108,7 @@ namespace Десктоп_РПМ
                         FavoriteBooks newFavorite = new FavoriteBooks
                         {
                             BookId = this.Id,
-                            Email = "zverev@example.com"
+                            Email = Account.Email
                         };
 
                         db.FavoriteBooks.Add(newFavorite);

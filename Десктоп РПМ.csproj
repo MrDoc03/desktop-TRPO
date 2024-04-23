@@ -72,15 +72,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Account.cs" />
     <Compile Include="UserContext.cs" />
     <Compile Include="Vk&amp;Tg.xaml.cs">
       <DependentUpon>Vk&amp;Tg.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AccWindow.xaml.cs">
+      <DependentUpon>AccWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Книга.xaml.cs">
       <DependentUpon>Книга.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Профиль.xaml.cs">
-      <DependentUpon>Профиль.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -98,11 +99,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Книга.xaml">
+    <Page Include="AccWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Профиль.xaml">
+    <Page Include="Книга.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

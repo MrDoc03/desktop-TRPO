@@ -83,7 +83,7 @@ namespace Десктоп_РПМ
                 favorite.Children.Clear();
                 using (UserContext db = new UserContext())
                 {
-                    var favoriteBookIds = db.FavoriteBooks.Select(f => f.BookId).ToList();
+                    var favoriteBookIds = db.FavoriteBooks.Where(f => f.Email == Account.Email).Select(f => f.BookId).ToList();
                     var favoriteBooks = db.Books.Where(b => favoriteBookIds.Contains(b.BookId)).ToList();
 
                     foreach (var book in favoriteBooks)
@@ -124,8 +124,7 @@ namespace Десктоп_РПМ
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Профиль taskWindow = new Профиль();
-            taskWindow.Show();
+           
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
