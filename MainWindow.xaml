@@ -540,7 +540,7 @@
                     MaxLines="2"
                     SelectionBrush="{x:Null}"
                     TextWrapping="Wrap">
-                    У нас вы найдете бесконечный мир книг, где каждая страница скрывает свою историю. Дополните свое путешествие в мир знаний и откройте для себя новые горизонты.
+                    У нас вы найдете бесконечный мир манги, где каждая страница скрывает свою историю. Дополните свое путешествие в мир знаний и откройте для себя новые горизонты.
                 </TextBox>
             </StackPanel>
         </DockPanel>
@@ -577,7 +577,7 @@
                             <ImageBrush ImageSource="/im1.1.jpg" Stretch="Fill" />
                         </Button.Background>
                         <Button.Content>
-                            Проживи сотни жизней в мире книг
+                            Проживи сотни жизней в мире манги
                         </Button.Content>
                     </Button>
                     <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
