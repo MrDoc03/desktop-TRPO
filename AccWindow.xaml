@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Десктоп_РПМ"
         mc:Ignorable="d"
-        Title="Window1" MinHeight="251" Height="251" MaxHeight="251" MaxWidth="176" Width="174">
+        Title="Window1" MinHeight="251" Height="308"  Width="312"
+        WindowStartupLocation="CenterScreen">
     <Grid Background="#FF00680A">
         <Grid.ColumnDefinitions>
-           
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -29,7 +30,7 @@
         <TextBlock Grid.Row="4" Text="Password:" Margin="10,10,10,10" FontFamily="Comic Sans MS" Grid.ColumnSpan="2" Foreground="#FFFFA629" FontWeight="Bold"/>
         <PasswordBox Grid.Row="5" Name="txtPassword" Margin="10,0,10,0" VerticalAlignment="Center" FontFamily="Comic Sans MS" Grid.ColumnSpan="2" SelectionBrush="#FFFFA629"/>
 
-        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left" Margin="23,10,0,10" Width="128" Grid.ColumnSpan="2">
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,51,0,-31" Width="128">
             <Button Content="Login" Click="Login_Click" Margin="5" Width="54
                     " FontFamily="Comic Sans MS" BorderBrush="#FFFFA629"/>
             <Button Content="Register" Click="Register_Click" Margin="5" Width="54" FontFamily="Comic Sans MS" BorderBrush="#FFFFA629"/>

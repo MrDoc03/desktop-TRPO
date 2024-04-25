@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -24,7 +25,7 @@ namespace Десктоп_РПМ
 
                 image.Source = new BitmapImage(new Uri(coverImagePath, UriKind.Relative));
 
-                switch (url.BookId)
+                /*switch (url.BookId)
                 {
                     case 1:
 
@@ -67,7 +68,55 @@ namespace Десктоп_РПМ
                         text8.Text = url.Title + " " + url.Author;
                         button8.Name = "id" + Convert.ToString(url.BookId);
                         break;
-                }
+                    
+                }*/
+                Button newButton = new Button();
+                newButton.Name = "id" + Convert.ToString(url.BookId);
+                newButton.Width = 180;
+                newButton.Height = 320;
+                newButton.Margin = new Thickness(10, 0, 66, 10);
+                newButton.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFA629"));
+                newButton.Click += Click_Book;
+                newButton.Cursor = Cursors.Hand;
+                newButton.Style = (Style)this.FindResource("DefaultButtonStyle"); // Применение стиля
+
+                // Создание содержимого кнопки
+                StackPanel stackPanel = new StackPanel();
+                stackPanel.Width = 180;
+                stackPanel.Height = 320;
+
+                // Создание изображения
+                Image newImage = new Image();
+                newImage.Name = "newimage";
+                newImage.Width = 180;
+                newImage.Height = 284;
+                newImage.Cursor = Cursors.Hand;
+                newImage.Stretch = Stretch.Fill;
+                newImage.Source = image.Source;
+                // Создание текстового поля
+                TextBox newText = new TextBox();
+                newText.Name = "newtext";
+                newText.Width = 180;
+                newText.Height = 36;
+                newText.HorizontalContentAlignment = HorizontalAlignment.Center;
+                newText.Background = Brushes.Transparent;
+                newText.BorderBrush = Brushes.Transparent;
+                newText.Cursor = Cursors.Hand;
+                newText.FontFamily = new FontFamily("Comic Sans MS");
+                newText.FontWeight = FontWeights.Bold;
+                newText.Foreground = Brushes.Green;
+                newText.IsReadOnly = true;
+                newText.MaxLines = 2;
+                newText.SelectionBrush = Brushes.Transparent;
+                newText.TextWrapping = TextWrapping.Wrap;
+                newText.Text = url.Title + " " + url.Author;
+                // Добавление изображения и текстового поля в контейнер StackPanel
+                stackPanel.Children.Add(newImage);
+                stackPanel.Children.Add(newText);
+
+                // Установка StackPanel в содержимое кнопки
+                newButton.Content = stackPanel;
+                mainpage.Children.Add(newButton);
             }
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

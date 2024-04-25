@@ -54,7 +54,7 @@ namespace Десктоп_РПМ
 
                         myImage.Margin = new Thickness(1, 1, 1, 1);
                         PageHolder.Children.Add(myImage);
-                        Console.WriteLine(myImage.Source.ToString());
+                        
                         //i++;
                     }
                     catch (Exception ex) { break; }

@@ -5,9 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Книга"
-    Width="800"
-    Height="450"
-    mc:Ignorable="d">
+    Width="1024"
+    Height="600"
+    mc:Ignorable="d"
+    WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
